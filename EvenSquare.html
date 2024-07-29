@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <input type="button" value="insert" id="myButton" onclick="insert()">
+    <input type="button" value="Find even square" onclick="done()">
+    <h2 id="print1"></h2>
+    <h2 id="print2"></h2>
+
+
+    <script>
+        const input = document.getElementById('input');
+        const button = document.getElementById('myButton');
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                button.click();
+            }
+        });
+
+        a = [];
+
+        const insert = () => {
+            a.push(document.getElementById('input').value);
+            document.getElementById('input').value = ""
+            document.getElementById('print1').innerHTML = a;
+        }
+        const done = () => {
+            a = a.filter(e => e % 2 == 0)
+            b = a.map(e => e * e)
+
+            result = "Even Squares are <br>";
+            for (let i = 0; i < a.length; i++) {
+                result += `${a[i]}<sup>2</sup> = ${b[i]}<br>`;
+            }
+            document.getElementById('print2').innerHTML = result;
+            a = [];
+        }
+    </script>
+</body>
+
+</html>

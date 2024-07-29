@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="age" id="age" placeholder="Enter age">
+    <input type="button" value="Check" onclick="check()">
+    <div id="display"></div>
+    <script>
+        arr = [
+            { name: "yagnik", age: 20 },
+            { name: "raj", age: 19 },
+            { name: "umang", age: 17 },
+            { name: "bhagyesh", age: 22 },
+            { name: "ronak", age: 15 },
+            { name: "parth", age: 13 },
+            { name: "bhavin", age: 18 },
+            { name: "vansh", age: 18 },
+            { name: "karan", age: 10 },
+            { name: "krunal", age: 12 }
+        ]
+
+        const display = (a)=>{
+            document.getElementById('display').innerHTML = ""
+            let display = "";
+            for(let i =0 ; i < a.length ; i++){
+                display += "<h4>"+a[i].name + " - " + a[i].age+"</h4>";
+            }
+            document.getElementById('display').innerHTML = display;
+        }
+        display(arr);
+
+        const check = ()=>{
+            const age = parseInt(document.getElementById('age').value);
+            if(isNaN(age)){
+                alert("Please enter a valid number");
+                return;
+            }
+            const result = arr.filter(e => e.age >= age);
+            if(result.length > 0)
+                    display(result);
+            else
+                alert("No person found with the given age");
+        }
+    </script>
+</body>
+
+</html>
